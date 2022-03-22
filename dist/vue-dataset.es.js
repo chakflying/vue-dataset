@@ -317,7 +317,6 @@ const ye = /* @__PURE__ */ P(le, [["render", ie]]), ce = {
     dsShowEntriesLovs: {
       type: Array,
       default: () => [
-        { value: 5, text: 5 },
         { value: 10, text: 10 },
         { value: 25, text: 25 },
         { value: 50, text: 50 },
