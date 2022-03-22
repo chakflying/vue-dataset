@@ -2,7 +2,7 @@
   <input
     type="text"
     :placeholder="dsSearchPlaceholder"
-    class="form-control"
+    class="form-input"
     :value="dsSearch"
     @input="input($event.target.value)"
   />

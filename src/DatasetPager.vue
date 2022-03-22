@@ -3,6 +3,7 @@
     <li :class="['page-item', disabledPrevious && 'disabled']">
       <a
         class="page-link"
+        :class="pageLinkClass"
         href="#"
         :tabindex="disabledPrevious ? '-1' : null"
         :aria-disabled="disabledPrevious ? 'true' : null"
@@ -13,10 +14,10 @@
     </li>
     <template v-for="(item, index) in dsPages" :key="index">
       <li :class="['page-item', item === dsPage && 'active', item === morePages && 'disabled']">
-        <a v-if="item !== morePages" class="page-link" href="#" @click.prevent="setActive(item)">
+        <a v-if="item !== morePages" class="page-link" :class="pageLinkClass" href="#" @click.prevent="setActive(item)">
           {{ item }}
         </a>
-        <span v-else class="page-link">
+        <span v-else class="page-link" :class="pageLinkClass">
           {{ item }}
         </span>
       </li>
@@ -24,6 +25,7 @@
     <li :class="['page-item', disabledNext && 'disabled']">
       <a
         class="page-link"
+        :class="pageLinkClass"
         href="#"
         :tabindex="disabledNext ? '-1' : null"
         :aria-disabled="disabledNext ? 'true' : null"
@@ -37,10 +39,14 @@
 
 <script>
 import { MORE_PAGES } from './helpers'
-import { computed, inject, ref } from 'vue'
+import { computed, defineProps, inject, ref } from 'vue'
 
 export default {
   setup() {
+    defineProps({
+      pageLinkClass: String
+    })
+
     const morePages = ref(MORE_PAGES)
     const dsPage = inject('dsPage')
     const dsPagecount = inject('dsPagecount')

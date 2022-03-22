@@ -1,7 +1,7 @@
 <template>
   <div class="form-inline">
     <label>{{ datasetI18n.show }}</label>
-    <select :value="dsShowEntries" class="form-control mr-1 ml-1" @change="change">
+    <select :value="dsShowEntries" class="form-input" :class="selectClass" @change="change">
       <option v-for="option in dsShowEntriesLovs" :key="option.value" :value="option.value">
         {{ option.text }}
       </option>
@@ -15,6 +15,10 @@ import { inject } from 'vue'
 
 export default {
   props: {
+    selectClass: {
+      type: String,
+      default: ''
+    },
     dsShowEntries: {
       type: Number,
       default: 10
