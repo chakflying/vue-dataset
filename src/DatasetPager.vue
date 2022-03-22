@@ -39,14 +39,16 @@
 
 <script>
 import { MORE_PAGES } from './helpers'
-import { computed, defineProps, inject, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 
 export default {
+  props: {
+    pageLinkClass: {
+      type: String,
+      default: ''
+    }
+  },
   setup() {
-    defineProps({
-      pageLinkClass: String
-    })
-
     const morePages = ref(MORE_PAGES)
     const dsPage = inject('dsPage')
     const dsPagecount = inject('dsPagecount')
